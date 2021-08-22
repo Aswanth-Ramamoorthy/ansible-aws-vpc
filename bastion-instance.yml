@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
     - name: Import VPC setup Variable
-      include_vars: vars/bastion_setup.txt
+      include_vars: vars/vpc_setup.txt
 
     - name: Import VPC setup Variable
       include_vars: vars/output_vars
