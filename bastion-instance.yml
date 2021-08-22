@@ -9,7 +9,7 @@
     - name: Import VPC setup Variable
       include_vars: vars/output_vars
 
-    - name: Create vprofile ec2 key
+    - name: Create ash ec2 key
       ec2_key:
         name: ash-key
         region: "{{region}}"
@@ -23,10 +23,10 @@
         mode: 0600
       when: key_out.changed
 
-    - name: Create Sec Grp for bastion host
+    - name: Create Security Group for bastion host
       ec2_group:
         name: Bastion-host-sg
-        description: Allow port 22 from everywhere and all port within sg
+        description: Allow port 22 from everywhere and all port within security group
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         rules:
@@ -48,6 +48,7 @@
           Name: "Bastion_host"
           Project: ash
           Owner: Aswanth Ramamoorthy
+          # To create only one Bastion Host
         exact_count: 1
         count_tag:
           Name: "Bastion_host"
