@@ -118,6 +118,8 @@
         wait: yes
         region: "{{ region }}"
         if_exist_do_not_create: true
+        tags:
+          Name: ash_NGW
       register: NATGW_out
 
     - name: Set up Private subnet route table
